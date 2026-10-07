@@ -1,0 +1,311 @@
+{
+  "synthetic": true,
+  "note": "Recorded live panel run on synthetic data. Replayed through the same citation check, filter and scoring code.",
+  "roleId": "people-analytics",
+  "candidateId": "morgan-ellery",
+  "model": "deepseek-flash",
+  "recordedAt": "2026-10-07",
+  "turns": [
+    {
+      "agent": "hm",
+      "round": 1,
+      "kind": "opening",
+      "output": {
+        "message": "Strong automation and AI governance evidence, with HR process depth. SQL data modelling and warehouse design are the clearest gaps; Python is listed but thinly evidenced. HR metrics, integration and privacy each have solid support.",
+        "claims": [
+          {
+            "req": "r1",
+            "score": 2,
+            "doc": "interview",
+            "quote": "Less exposure to SQL data modelling at scale",
+            "reason": "Reporting queries only, no warehouse schema design shown."
+          },
+          {
+            "req": "r2",
+            "score": 3,
+            "doc": "cv",
+            "quote": "Skills: Python, JavaScript, Power Automate, SQL, prompt evaluation, process mapping",
+            "reason": "Python listed, but little detail on analysis or automation use."
+          },
+          {
+            "req": "r3",
+            "score": 4,
+            "doc": "cv",
+            "quote": "mapped recruitment and absence processes and introduced a ticketing workflow used by 40 HR advisers",
+            "reason": "Direct HR process mapping and tooling experience."
+          },
+          {
+            "req": "r4",
+            "score": 4,
+            "doc": "cv",
+            "quote": "Integrated the HRIS with payroll and the IT service desk through REST APIs and webhooks",
+            "reason": "Hands-on HR system integration with reliability controls."
+          },
+          {
+            "req": "r5",
+            "score": 4,
+            "doc": "cv",
+            "quote": "Ran a data protection impact assessment with the DPO for each AI use case",
+            "reason": "Repeat DPIA work with the data protection officer."
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 848,
+        "completionTokens": 322
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "tech",
+      "round": 1,
+      "kind": "opening",
+      "output": {
+        "message": "Strong automation delivery evidence, but SQL depth is thin. Python is asserted in skills with no demonstrated analysis work; integration evidence is concrete. Scores reflect what documents actually show.",
+        "claims": [
+          {
+            "req": "r1",
+            "score": 2,
+            "doc": "interview",
+            "quote": "Less exposure to SQL data modelling at scale; has written reporting queries but not designed a warehouse schema.",
+            "reason": "Reporting queries only; no warehouse schema design shown."
+          },
+          {
+            "req": "r2",
+            "score": 2,
+            "doc": "cv",
+            "quote": "Skills: Python, JavaScript, Power Automate, SQL, prompt evaluation, process mapping.",
+            "reason": "Listed as a skill only; no Python analysis or automation example."
+          },
+          {
+            "req": "r4",
+            "score": 4,
+            "doc": "cv",
+            "quote": "Integrated the HRIS with payroll and the IT service desk through REST APIs and webhooks, with retries and alerting on failed events.",
+            "reason": "Concrete integration with error handling across named systems."
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 852,
+        "completionTokens": 227
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "people",
+      "round": 1,
+      "kind": "opening",
+      "output": {
+        "message": "Strong collaboration and growth evidence: chaired cross-functional design reviews, mentored juniors and ran code review. Onboarding should pair them with a data engineer for SQL modelling and warehouse schema work, plus a buddy for People team processes and GDPR sign-off routes. Recommend a structured ramp-up on r3 and r5.",
+        "claims": [
+          {
+            "req": "collaboration",
+            "score": 5,
+            "doc": "cover",
+            "quote": "I chaired a fortnightly design review with HR business partners, legal and IT",
+            "reason": "Shows sustained cross-functional leadership and stakeholder engagement."
+          },
+          {
+            "req": "growth",
+            "score": 5,
+            "doc": "interview",
+            "quote": "Mentored two junior developers and ran the team's code review rota",
+            "reason": "Evidence of developing others and taking on team-level responsibility."
+          },
+          {
+            "req": "growth",
+            "score": 4,
+            "doc": "interview",
+            "quote": "Less exposure to SQL data modelling at scale",
+            "reason": "Clear, self-aware gap; targeted support would close it quickly."
+          },
+          {
+            "req": "r5",
+            "score": 5,
+            "doc": "cv",
+            "quote": "Ran a data protection impact assessment with the DPO for each AI use case",
+            "reason": "Demonstrates responsible AI and privacy practice with governance partners."
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 860,
+        "completionTokens": 323
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "auditor",
+      "round": 2,
+      "kind": "review",
+      "output": {
+        "message": "Most claims are quoted and consistent; three need attention. c7 and c11 score the same thin skills line differently, and c11's quote does not evidence growth. c2 and c7 both rest on a bare skills list. No protected-characteristic passages appear in the documents supplied to me.",
+        "challenges": [
+          {
+            "claim": "c2",
+            "issue": "weak",
+            "note": "Skills list alone is thin evidence for Python analysis; interview shows no analysis work."
+          },
+          {
+            "claim": "c7",
+            "issue": "inconsistent",
+            "note": "Same quote as c2 but scored 2, not 3; panellists should align."
+          },
+          {
+            "claim": "c11",
+            "issue": "unsupported",
+            "note": "Quote describes an SQL gap, not growth potential."
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 1442,
+        "completionTokens": 172
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "hm",
+      "round": 2,
+      "kind": "response",
+      "output": {
+        "message": "Accept the c2 challenge: the skills list is thin. The policy assistant quote shows applied Python work, so I keep 3 but restate the basis. No other challenges raised, so c1 and c3 to c5 stand.",
+        "revisions": [
+          {
+            "claim": "c2",
+            "score": 3,
+            "reason": "Skills list thin; policy assistant shows applied Python work, so score unchanged."
+          }
+        ],
+        "claims": [
+          {
+            "id": "c6",
+            "req": "r2",
+            "score": 3,
+            "quote": "Built an LLM-assisted HR policy assistant with retrieval over 300 policy documents",
+            "doc": "cv"
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 1078,
+        "completionTokens": 143
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "tech",
+      "round": 2,
+      "kind": "response",
+      "output": {
+        "message": "Challenge accepted on c7: the quote is identical to c2 but scored lower. Raising c7 to 3 to align with the panel. c6 and c8 stand unchanged; the interview quote directly limits SQL data modelling while the CV integration evidence remains strong.",
+        "revisions": [
+          {
+            "claim": "c7",
+            "score": 3,
+            "reason": "Same quote as c2, so aligning score with the panel rather than scoring lower."
+          }
+        ],
+        "claims": []
+      },
+      "usage": {
+        "promptTokens": 1022,
+        "completionTokens": 103
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "people",
+      "round": 2,
+      "kind": "response",
+      "output": {
+        "message": "The Auditor is right that c11's quote shows a gap, not growth. I withdraw c11 and replace it with two supported growth claims. Other scores stand.",
+        "revisions": [
+          {
+            "claim": "c11",
+            "score": 1,
+            "reason": "Quote evidences an SQL gap, not growth potential; withdrawn as a growth claim"
+          }
+        ],
+        "claims": [
+          {
+            "doc": "interview",
+            "quote": "Mentored two junior developers and ran the team's code review rota",
+            "req": "growth",
+            "score": 5
+          },
+          {
+            "doc": "cover",
+            "quote": "I would like to build an evaluation practice for AI features before they reach employees",
+            "req": "growth",
+            "score": 4
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 1019,
+        "completionTokens": 157
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "comp",
+      "round": 3,
+      "kind": "band",
+      "output": {
+        "message": "The recommended figure of £54500 sits between the offer floor of £52000 and the equity cap of £61000, below the P50 of £57000. The ceiling is £61000 because that is the equity cap, which is lower than the P75 of £62000, so equity limits the top of the band."
+      },
+      "usage": {
+        "promptTokens": 991,
+        "completionTokens": 73
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "chair",
+      "round": 3,
+      "kind": "brief",
+      "output": {
+        "message": "Evidence is strong on integration, privacy and HR process work, with applied Python shown by the policy assistant. SQL data modelling remains thin across documents, and panellists disagreed over scoring bare skills lists. Growth and collaboration are well evidenced. Suggest advancing with a targeted probe on data modelling depth rather than more evidence.",
+        "recommendation": "advance",
+        "dissent": [
+          "Panellists split on whether a bare skills list can support a Python score, and on how far the SQL gap limits technical depth."
+        ],
+        "questions": [
+          {
+            "req": "r1",
+            "question": "Which warehouse schema or dimensional model have you designed end to end, and what decisions shaped it?"
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 1786,
+        "completionTokens": 144
+      },
+      "invalidReplies": []
+    }
+  ],
+  "summary": {
+    "counters": {
+      "claimsMade": 15,
+      "claimsAccepted": 15,
+      "unsupported": 0,
+      "struck": 0
+    },
+    "metrics": {
+      "roleFit": 65,
+      "technicalDepth": 58,
+      "growthPotential": 83,
+      "evidenceStrength": 88,
+      "rampUp": 70,
+      "rampUpWeeks": 5
+    },
+    "outcome": "Needs more evidence",
+    "usage": {
+      "promptTokens": 9898,
+      "completionTokens": 1664,
+      "llmTurns": 9
+    }
+  }
+}

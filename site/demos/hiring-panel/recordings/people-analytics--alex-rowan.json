@@ -1,0 +1,342 @@
+{
+  "synthetic": true,
+  "note": "Recorded live panel run on synthetic data. Replayed through the same citation check, filter and scoring code.",
+  "roleId": "people-analytics",
+  "candidateId": "alex-rowan",
+  "model": "deepseek-flash",
+  "recordedAt": "2026-10-07",
+  "turns": [
+    {
+      "agent": "hm",
+      "round": 1,
+      "kind": "opening",
+      "output": {
+        "message": "Opening assessment for the People Analytics Engineer role. Evidence is strongest on automation, integration and responsible AI, with some HR process exposure. SQL and Python evidence is thinner, so I score those cautiously and skip nothing that the documents support.",
+        "claims": [
+          {
+            "req": "r1",
+            "score": 3,
+            "doc": "cv",
+            "quote": "they owned SQL reporting and the HR data model",
+            "reason": "Owned SQL reporting and HR data model, but dated and no recent depth shown."
+          },
+          {
+            "req": "r2",
+            "score": 3,
+            "doc": "cv",
+            "quote": "Designed and delivered an automation programme covering 22 HR processes",
+            "reason": "Automation delivery shown, but no explicit Python evidence in documents."
+          },
+          {
+            "req": "r3",
+            "score": 4,
+            "doc": "interview",
+            "quote": "weekly prioritisation sessions with HR business partners",
+            "reason": "Regular HR business partner work and HR process automation indicate solid metrics exposure."
+          },
+          {
+            "req": "r4",
+            "score": 5,
+            "doc": "cv",
+            "quote": "integration layer between the HRIS, payroll and the learning platform using event-driven APIs",
+            "reason": "Direct multi-source HR integration delivery using event-driven APIs."
+          },
+          {
+            "req": "r5",
+            "score": 4,
+            "doc": "interview",
+            "quote": "data minimisation and retention for employee query logs",
+            "reason": "Strong privacy answer; guidance and AI Act course add credibility."
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 814,
+        "completionTokens": 321
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "tech",
+      "round": 1,
+      "kind": "opening",
+      "output": {
+        "message": "Opening technical view: strong, current evidence on automation and integration, with a solid SQL and data modelling base. The triage evaluation account is specific and measured. Enthusiasm and course study alone carry little weight, so Python depth rests on the automation programme rather than the cover note.",
+        "claims": [
+          {
+            "req": "r1",
+            "score": 4,
+            "doc": "cv",
+            "quote": "they owned SQL reporting and the HR data model",
+            "reason": "Owned SQL reporting and HR data model, though dated."
+          },
+          {
+            "req": "r2",
+            "score": 4,
+            "doc": "cv",
+            "quote": "Designed and delivered an automation programme covering 22 HR processes",
+            "reason": "Delivered automation across 22 HR processes, suggesting applied Python."
+          },
+          {
+            "req": "r4",
+            "score": 4,
+            "doc": "cv",
+            "quote": "integration layer between the HRIS, payroll and the learning platform using event-driven APIs",
+            "reason": "Built event-driven HRIS, payroll and learning integration layer."
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 818,
+        "completionTokens": 227
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "people",
+      "round": 1,
+      "kind": "opening",
+      "output": {
+        "message": "Strong opening picture: this person brings deep HR technology delivery and a clear, documented approach to responsible automation. Onboarding should pair them with an HR business partner for process context, give early ownership of a small People data integration, and include Fernhollow's data protection and works council ways of working.",
+        "claims": [
+          {
+            "req": "collaboration",
+            "score": 4,
+            "doc": "interview",
+            "quote": "Described weekly prioritisation sessions with HR business partners.",
+            "reason": "Shows established habit of structured collaboration with HR stakeholders."
+          },
+          {
+            "req": "growth",
+            "score": 4,
+            "doc": "cover",
+            "quote": "rebuilt my skills in LLM evaluation and completed a course on the EU AI Act",
+            "reason": "Recent, self-directed learning in a relevant emerging area."
+          },
+          {
+            "req": "r5",
+            "score": 5,
+            "doc": "cv",
+            "quote": "every routing rule is logged and reviewed monthly",
+            "reason": "Concrete, auditable governance practice for automated decisions."
+          },
+          {
+            "req": "r3",
+            "score": 4,
+            "doc": "cv",
+            "quote": "an automation programme covering 22 HR processes",
+            "reason": "Broad exposure to HR processes and their automation."
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 826,
+        "completionTokens": 307
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "auditor",
+      "round": 2,
+      "kind": "review",
+      "output": {
+        "message": "Round 2 review. Most claims are quoted and defensible, though several scores look generous for the evidence cited. Two passages in the interview notes must be disregarded: the remark about children and Tuesday finishes, and the interviewer's comment on seniority in years and energy levels. Both touch protected characteristics and cannot inform scoring or discussion.",
+        "challenges": [
+          {
+            "claim": "c2",
+            "issue": "weak",
+            "note": "Programme delivery implies automation, not Python specifically; quote does not show Python coding."
+          },
+          {
+            "claim": "c7",
+            "issue": "weak",
+            "note": "Same quote as c2 but scored higher; no Python evidence justifies 4."
+          },
+          {
+            "claim": "c3",
+            "issue": "weak",
+            "note": "Prioritisation sessions show stakeholder working, not HR metrics ownership."
+          },
+          {
+            "claim": "c6",
+            "issue": "inconsistent",
+            "note": "Identical quote scored 4 by Theo and 3 by Iris; reconcile before totals."
+          },
+          {
+            "claim": "c1",
+            "issue": "inconsistent",
+            "note": "Same evidence as c6; differing scores need explanation."
+          },
+          {
+            "claim": "c11",
+            "issue": "weak",
+            "note": "Monthly logging review supports governance, but GDPR and retention evidence is stronger in c5."
+          },
+          {
+            "claim": "c9",
+            "issue": "weak",
+            "note": "One meeting description is thin support for a 4 on collaboration."
+          },
+          {
+            "claim": "c10",
+            "issue": "weak",
+            "note": "Course completion and self-described skill rebuilding are study, not demonstrated growth."
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 1389,
+        "completionTokens": 341
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "hm",
+      "round": 2,
+      "kind": "response",
+      "output": {
+        "message": "I accept c2 and c3 are weakly evidenced and lower them. c1 stands: SQL reporting and data model ownership is direct evidence, distinct from the cover note's AI Act course. Two new claims replace the gaps.",
+        "revisions": [
+          {
+            "claim": "c2",
+            "score": 2,
+            "reason": "Automation programme shows delivery, not Python coding specifically"
+          },
+          {
+            "claim": "c3",
+            "score": 3,
+            "reason": "Stakeholder sessions show process engagement, not metrics ownership"
+          }
+        ],
+        "claims": [
+          {
+            "req": "r2",
+            "score": 3,
+            "quote": "rebuilt my skills in LLM evaluation",
+            "doc": "cover"
+          },
+          {
+            "req": "r3",
+            "score": 4,
+            "quote": "error rate by ticket category",
+            "doc": "interview"
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 2369,
+        "completionTokens": 371
+      },
+      "invalidReplies": [
+        "claim 1: req must be one of r1, r2, r3, r4, r5; claim 2: req must be one of r1, r2, r3, r4, r5"
+      ]
+    },
+    {
+      "agent": "tech",
+      "round": 2,
+      "kind": "response",
+      "output": {
+        "message": "c7's quote shows automation delivery, not Python, so I lower it to 3 and add a Python-specific claim. c6 stands at 4: owning SQL reporting and the HR data model is direct evidence for r1. Iris's 3 is a different judgement, not an inconsistency in the quote.",
+        "revisions": [
+          {
+            "claim": "c7",
+            "score": 3,
+            "reason": "Quote evidences automation delivery, not Python coding specifically"
+          }
+        ],
+        "claims": [
+          {
+            "doc": "cv",
+            "quote": "rebuilt my skills in LLM evaluation and completed a course",
+            "req": "r2",
+            "score": 3
+          },
+          {
+            "doc": "interview",
+            "quote": "evaluated against a labelled set of 1,200 historical tickets",
+            "req": "r2",
+            "score": 3
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 982,
+        "completionTokens": 179
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "people",
+      "round": 2,
+      "kind": "response",
+      "output": {
+        "message": "No challenges were raised to my claims, so I confirm my position. The evidence I cited remains accurate and appropriately scored against the requirements.",
+        "revisions": [],
+        "claims": []
+      },
+      "usage": {
+        "promptTokens": 963,
+        "completionTokens": 41
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "comp",
+      "round": 3,
+      "kind": "band",
+      "output": {
+        "message": "The recommended figure of £55500 sits between the P25 of £52000 and the P50 of £57000, below the P75 of £62000. The ceiling is £61000 because the equity cap is £61000, and the offer floor is £52000. Role fit is 69/100."
+      },
+      "usage": {
+        "promptTokens": 965,
+        "completionTokens": 71
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "chair",
+      "round": 3,
+      "kind": "brief",
+      "output": {
+        "message": "Evidence is strong on integration, privacy and HR process delivery, with SQL ownership documented. Python for analysis and automation remains thinly evidenced, and panellists disagree on how far the automation programme proves coding depth. No rejection is proposed. Suggest advancing to a focused technical interview, with the Python gap tested directly before any offer decision.",
+        "recommendation": "advance",
+        "dissent": [
+          "Panellists split on whether the automation programme evidences Python depth or only delivery management."
+        ],
+        "questions": [
+          {
+            "req": "r2",
+            "question": "Which Python analysis or automation work can you show, and how was its output tested and maintained?"
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 1721,
+        "completionTokens": 137
+      },
+      "invalidReplies": []
+    }
+  ],
+  "summary": {
+    "counters": {
+      "claimsMade": 16,
+      "claimsAccepted": 15,
+      "unsupported": 1,
+      "struck": 5
+    },
+    "metrics": {
+      "roleFit": 69,
+      "technicalDepth": 73,
+      "growthPotential": 85,
+      "evidenceStrength": 97,
+      "rampUp": 80,
+      "rampUpWeeks": 4
+    },
+    "outcome": "Needs more evidence",
+    "usage": {
+      "promptTokens": 10847,
+      "completionTokens": 1995,
+      "llmTurns": 9
+    }
+  }
+}

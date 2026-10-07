@@ -1,0 +1,298 @@
+{
+  "synthetic": true,
+  "note": "Recorded live panel run on synthetic data. Replayed through the same citation check, filter and scoring code.",
+  "roleId": "people-analytics",
+  "candidateId": "jordan-vale",
+  "model": "deepseek-flash",
+  "recordedAt": "2026-10-07",
+  "turns": [
+    {
+      "agent": "hm",
+      "round": 1,
+      "kind": "opening",
+      "output": {
+        "message": "Opening view: solid HR process grounding and some hands-on tooling, but the technical requirements are thinly evidenced. SQL and data modelling, Python analysis, and HR data integration look weak; privacy and responsible use is unevidenced. Best fit is HR metrics and processes, with development needed on the engineering side.",
+        "claims": [
+          {
+            "req": "r3",
+            "score": 4,
+            "doc": "interview",
+            "quote": "described the starter checklist and the leaver steps accurately and in order",
+            "reason": "Accurate, ordered HR process knowledge evidenced in interview."
+          },
+          {
+            "req": "r2",
+            "score": 2,
+            "doc": "interview",
+            "quote": "Wrote a short Python script to rename report files but has not used it for analysis",
+            "reason": "Some Python scripting, but no analysis or automation delivery."
+          },
+          {
+            "req": "r4",
+            "score": 2,
+            "doc": "interview",
+            "quote": "said they had not built one but had watched the supplier's team configure the chatbot",
+            "reason": "Observed integration work only; no hands-on API experience."
+          },
+          {
+            "req": "r1",
+            "score": 2,
+            "doc": "cv",
+            "quote": "spreadsheet macros that merge weekly absence reports from twelve stores into one file",
+            "reason": "Data merging in spreadsheets, not SQL or data modelling."
+          },
+          {
+            "req": "r5",
+            "score": 2,
+            "doc": "interview",
+            "quote": "Could not describe how the chatbot's answers were tested or who signed them off",
+            "reason": "Limited grasp of testing, sign-off and responsible use."
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 832,
+        "completionTokens": 350
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "tech",
+      "round": 1,
+      "kind": "opening",
+      "output": {
+        "message": "Opening technical assessment. SQL and data modelling evidence is thin: spreadsheet macros and HRIS configuration, not SQL. Python is beginner-level and script use is file renaming, not analysis. Integration evidence is observational only, with no API build or testing ownership. Enthusiasm and reading are not skill evidence, so scores stay low.",
+        "claims": [
+          {
+            "req": "r1",
+            "score": 2,
+            "doc": "cv",
+            "quote": "Built spreadsheet macros that merge weekly absence reports from twelve stores",
+            "reason": "Merging reports shows data handling, but no SQL or data modelling evidence."
+          },
+          {
+            "req": "r2",
+            "score": 2,
+            "doc": "interview",
+            "quote": "Wrote a short Python script to rename report files but has not used it for analysis",
+            "reason": "Script exists but not used for analysis or automation of substance."
+          },
+          {
+            "req": "r4",
+            "score": 1,
+            "doc": "interview",
+            "quote": "said they had not built one but had watched the supplier's team configure the chatbot",
+            "reason": "Observation only; no hands-on integration build or configuration."
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 836,
+        "completionTokens": 245
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "people",
+      "round": 1,
+      "kind": "opening",
+      "output": {
+        "message": "A solid HR systems background with real process depth, but the technical side is early. Onboarding should pair a structured SQL and Python development plan with a mentor for integration work and data governance sign-off. Shadowing an engineer on API and testing practice would help this person ramp up. Give early ownership of small automation tasks so momentum builds safely.",
+        "claims": [
+          {
+            "req": "collaboration",
+            "score": 4,
+            "doc": "interview",
+            "quote": "clear examples of helping store managers",
+            "reason": "Shows practical, trusted working relationships with business stakeholders."
+          },
+          {
+            "req": "growth",
+            "score": 4,
+            "doc": "cover",
+            "quote": "I would welcome a structured development plan for the technical parts of the role",
+            "reason": "Self-aware about gaps and openly seeks structured technical development."
+          },
+          {
+            "req": "r3",
+            "score": 4,
+            "doc": "interview",
+            "quote": "described the starter checklist and the leaver steps accurately and in order",
+            "reason": "Demonstrates hands-on grounding in core HR processes."
+          },
+          {
+            "req": "r5",
+            "score": 2,
+            "doc": "interview",
+            "quote": "Could not describe how the chatbot's answers were tested or who signed them off",
+            "reason": "Limited evidence of responsible-use or governance awareness."
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 844,
+        "completionTokens": 283
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "auditor",
+      "round": 2,
+      "kind": "review",
+      "output": {
+        "message": "Claims c1 to c12 are quoted verbatim and consistent across panellists. c8 scores integration lower than c3 on identical evidence, so harmonise to 2. The panel must disregard the cover note's aspiration to lead an automation programme as unproven, and any remarks touching protected characteristics, which were hidden from panellists.",
+        "challenges": [
+          {
+            "claim": "c8",
+            "issue": "inconsistent",
+            "note": "Same chatbot quote as c3 but scored 1 rather than 2; align both."
+          },
+          {
+            "claim": "c10",
+            "issue": "weak",
+            "note": "Willingness to accept a development plan is not evidence of growth; score overstates it."
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 1415,
+        "completionTokens": 154
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "hm",
+      "round": 2,
+      "kind": "response",
+      "output": {
+        "message": "No challenges were raised, so I confirm all five scores as they stand. The evidence supports a developing profile: solid HR process knowledge, early technical skills, and clear gaps in SQL, integration and privacy assurance.",
+        "revisions": [],
+        "claims": []
+      },
+      "usage": {
+        "promptTokens": 1043,
+        "completionTokens": 56
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "tech",
+      "round": 2,
+      "kind": "response",
+      "output": {
+        "message": "The c8 challenge is fair: the same chatbot evidence cannot be scored 1 for me and 2 elsewhere. I raise c8 to 2, since watching supplier configuration shows limited but real exposure to integration. I add one new claim on the starter checklist to strengthen r1 evidence.",
+        "revisions": [
+          {
+            "claim": "c8",
+            "score": 2,
+            "reason": "Same chatbot evidence scored 2 elsewhere; watching supplier configure integration is limited exposure, so align at 2."
+          }
+        ],
+        "claims": [
+          {
+            "doc": "interview",
+            "quote": "described the starter checklist and the leaver steps accurately and in order",
+            "req": "r1",
+            "score": 2
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 986,
+        "completionTokens": 150
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "people",
+      "round": 2,
+      "kind": "response",
+      "output": {
+        "message": "Only c10 was challenged. Willingness alone is thin, but the CV shows self-directed learning, so I keep a modest upward signal rather than a strong one.",
+        "revisions": [
+          {
+            "claim": "c10",
+            "score": 3,
+            "reason": "A development plan request shows willingness, not demonstrated growth; CV self-study supports only moderate evidence."
+          }
+        ],
+        "claims": []
+      },
+      "usage": {
+        "promptTokens": 1009,
+        "completionTokens": 86
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "comp",
+      "round": 3,
+      "kind": "band",
+      "output": {
+        "message": "The recommended figure is £52,000, sitting at the offer floor and the P25 benchmark. The ceiling is £61,000 because the equity cap is £61,000, which is below the P75 of £62,000. Role fit of 47/100 keeps the recommendation at the lower end of the band."
+      },
+      "usage": {
+        "promptTokens": 903,
+        "completionTokens": 72
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "chair",
+      "round": 3,
+      "kind": "brief",
+      "output": {
+        "message": "Evidence shows solid HR process depth (c1, c11) but early technical skills: SQL, Python, integration and privacy all score 2, and the chatbot sign-off gap is unaddressed. Panellists agree on the profile; dissent is limited to score harmonisation, now settled at 2. Given role fit 47/100 and weak technical depth, more evidence is needed before advancing. Development plan and mentor support would help.",
+        "recommendation": "more_evidence",
+        "dissent": [
+          "Only minor disagreement on harmonising integration scores; resolved at 2 for identical chatbot evidence."
+        ],
+        "questions": [
+          {
+            "req": "r1",
+            "question": "What SQL or data modelling work has been done beyond spreadsheet macros, and how were tables structured?"
+          },
+          {
+            "req": "r2",
+            "question": "Which Python analysis tasks have been completed beyond renaming files, and what did the output show?"
+          },
+          {
+            "req": "r4",
+            "question": "What hands-on integration work has been done, beyond observing a supplier configure a chatbot?"
+          },
+          {
+            "req": "r5",
+            "question": "How have privacy or GDPR sign-off responsibilities been handled for HR data or supplier tools?"
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 1768,
+        "completionTokens": 253
+      },
+      "invalidReplies": []
+    }
+  ],
+  "summary": {
+    "counters": {
+      "claimsMade": 13,
+      "claimsAccepted": 13,
+      "unsupported": 0,
+      "struck": 0
+    },
+    "metrics": {
+      "roleFit": 47,
+      "technicalDepth": 40,
+      "growthPotential": 65,
+      "evidenceStrength": 58,
+      "rampUp": 50,
+      "rampUpWeeks": 7
+    },
+    "outcome": "Needs more evidence",
+    "usage": {
+      "promptTokens": 9636,
+      "completionTokens": 1649,
+      "llmTurns": 9
+    }
+  }
+}
