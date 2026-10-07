@@ -1,0 +1,9 @@
+{
+  "name": "hr-hiring-panel",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test site/test/*.test.js",
+    "sync": "scripts/sync-to-site.sh"
+  }
+}
