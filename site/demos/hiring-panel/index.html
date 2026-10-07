@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hiring Panel — Multi-Agent Decision Support Demo | Neuromorphic Inference Lab</title>
+  <meta name="description" content="Live demo: six AI agents debate a synthetic candidate for a role, with code-enforced citation checks, a protected-characteristic filter, code-computed scores and pay band, and a human who makes every decision." />
+  <link rel="canonical" href="https://www.neuromorphicinference.com/demos/hiring-panel/" />
+  <link rel="icon" href="/favicon.svg" />
+  <link rel="stylesheet" href="/style.css" />
+
+  <style>
+    /* ── Hiring Panel page styles ── */
+    .hp-notice { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; margin-top: 14px; padding: 10px 14px; border-radius: 14px; border: 1px solid rgba(245,158,11,.35); background: linear-gradient(rgba(245,158,11,.10), rgba(245,158,11,.10)), #0B1220; font-size: 14px; position: sticky; top: 72px; z-index: 5; box-shadow: 0 8px 24px rgba(0,0,0,.35); }
+    .hp-notice strong { color: var(--txt); }
+    @media (max-width: 760px) {
+      .hp-notice { position: fixed; top: auto; left: 8px; right: 8px; bottom: 8px; margin: 0; padding: 8px 10px; font-size: 12px; line-height: 1.35; flex-wrap: nowrap; gap: 8px; }
+      .hp-notice .mode-badge { font-size: 11px; padding: 4px 8px; }
+      main.container { padding-bottom: 84px; }
+    }
+    .mode-badge { font-size: 12px; font-weight: 700; letter-spacing: .04em; padding: 6px 12px; border-radius: 999px; border: 1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.06); white-space: nowrap; }
+    .mode-badge.live { border-color: rgba(110,231,255,.45); background: rgba(110,231,255,.12); color: var(--a1); }
+    .mode-badge.recorded { border-color: rgba(167,139,250,.45); background: rgba(167,139,250,.12); color: var(--a2); }
+
+    fieldset { border: 0; margin: 0 0 14px; padding: 0; min-width: 0; }
+    legend { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; padding: 0; }
+    .choice-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+    .choice-grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    @media (max-width: 760px) { .choice-grid, .choice-grid.two { grid-template-columns: 1fr; } }
+    .choice { position: relative; display: block; cursor: pointer; }
+    .choice input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+    .choice .face { display: block; height: 100%; padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,.12); background: rgba(0,0,0,.18); transition: border-color .15s ease, background .15s ease; }
+    .choice .face b { display: block; font-size: 14px; margin-bottom: 4px; color: var(--txt); }
+    .choice .face span { display: block; font-size: 12.5px; line-height: 1.5; color: var(--muted); margin: 0; font-weight: 400; }
+    .choice input:checked + .face { border-color: rgba(110,231,255,.55); background: rgba(110,231,255,.08); }
+    .choice input:focus-visible + .face { outline: 2px solid rgba(110,231,255,.6); outline-offset: 2px; }
+    .docs { margin: 0 0 14px; font-size: 13px; }
+    .docs summary { cursor: pointer; color: var(--a1); }
+    .docs dl { margin: 8px 0 0; display: grid; gap: 8px; }
+    .docs dt { font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+    .docs dd { margin: 0; line-height: 1.6; color: var(--txt); }
+    .run-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    .run-row .btn { min-height: 44px; cursor: pointer; font-family: inherit; }
+    .run-row .btn[disabled] { opacity: .55; cursor: not-allowed; transform: none; }
+    .speed { display: inline-flex; border: 1px solid rgba(255,255,255,.14); border-radius: 999px; overflow: hidden; }
+    .speed label { position: relative; cursor: pointer; }
+    .speed input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+    .speed span { display: block; padding: 10px 14px; font-size: 13px; color: var(--muted); }
+    .speed input:checked + span { background: rgba(110,231,255,.14); color: var(--a1); font-weight: 700; }
+    .speed input:focus-visible + span { outline: 2px solid rgba(110,231,255,.6); outline-offset: -2px; }
+    #runStatus { font-size: 13px; color: var(--muted); }
+
+    .hp-layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 14px; margin-top: 14px; align-items: start; }
+    @media (max-width: 960px) { .hp-layout { grid-template-columns: 1fr; } }
+    .hp-title { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
+    .rounds { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+    .round { font-size: 11.5px; padding: 4px 10px; border-radius: 999px; border: 1px solid rgba(255,255,255,.12); color: var(--muted); }
+    .round.on { color: var(--txt); border-color: rgba(110,231,255,.5); background: rgba(110,231,255,.10); }
+    .round.done { color: #34d399; border-color: rgba(52,211,153,.35); }
+
+    #transcript { list-style: none; margin: 0; padding: 0 4px 0 0; display: flex; flex-direction: column; gap: 14px; max-height: 720px; overflow-y: auto; overflow-x: hidden; scroll-behavior: smooth; }
+    .empty { color: var(--muted); font-size: 14px; }
+    .msg { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 10px; animation: msg-in .35s ease; }
+    @keyframes msg-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    .avatar { width: 40px; height: 40px; display: block; }
+    .bubble { border-radius: 4px 14px 14px 14px; border: 1px solid rgba(255,255,255,.10); border-left: 3px solid var(--c, var(--a1)); background: rgba(0,0,0,.20); padding: 10px 12px; font-size: 14px; line-height: 1.55; min-width: 0; }
+    .who { display: flex; flex-wrap: wrap; gap: 6px 8px; align-items: baseline; margin-bottom: 4px; }
+    .who b { color: var(--c, var(--txt)); }
+    .who span { font-size: 12px; color: var(--muted); }
+    .sentences { margin: 0; }
+    .sentence { transition: color .4s ease; background-image: linear-gradient(currentColor, currentColor); background-repeat: no-repeat; background-position: 0 58%; background-size: 0 1.5px; }
+    .sentence.struck { color: rgba(248,113,113,.75); background-size: 100% 1.5px; transition: background-size .6s ease, color .4s ease; }
+    .strike-label { display: inline-block; margin: 0 4px; font-size: 11px; font-weight: 700; padding: 1px 8px; border-radius: 999px; color: #f87171; border: 1px solid rgba(239,68,68,.4); background: rgba(239,68,68,.10); opacity: 0; transition: opacity .3s ease .3s; }
+    .sentence.struck + .strike-label { opacity: 1; }
+    .items { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 6px; }
+    .claim { border-radius: 10px; border: 1px solid rgba(255,255,255,.08); background: rgba(255,255,255,.03); padding: 7px 9px; font-size: 12.5px; transition: border-color .3s ease, background .3s ease, opacity .3s ease; animation: msg-in .3s ease; }
+    .claim-head { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+    .claim-head b { font-size: 12.5px; }
+    .claim q { display: block; margin: 4px 0 2px; color: var(--txt); font-style: italic; quotes: "“" "”"; word-break: break-word; }
+    .claim .reason, .claim .note { color: var(--muted); word-break: break-word; }
+    .claim.accepted { border-color: rgba(52,211,153,.35); }
+    .claim.unsupported { border-color: rgba(245,158,11,.45); background: rgba(245,158,11,.06); }
+    .claim.unsupported q { text-decoration: line-through rgba(245,158,11,.7); }
+    .claim.struck { border-color: rgba(239,68,68,.45); background: rgba(239,68,68,.06); }
+    .claim.struck q, .claim.struck .reason { text-decoration: line-through rgba(248,113,113,.8); }
+    .claim.flash { animation: flash .9s ease; }
+    @keyframes flash { 0% { box-shadow: 0 0 0 0 rgba(110,231,255,.5); } 100% { box-shadow: 0 0 0 8px rgba(110,231,255,0); } }
+    .pill { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.06); white-space: nowrap; }
+    .pill.ok { color: #34d399; border-color: rgba(52,211,153,.35); background: rgba(52,211,153,.10); }
+    .pill.warn { color: #fbbf24; border-color: rgba(245,158,11,.40); background: rgba(245,158,11,.10); }
+    .pill.bad { color: #f87171; border-color: rgba(239,68,68,.40); background: rgba(239,68,68,.10); }
+    .pill.info { color: var(--a1); border-color: rgba(110,231,255,.35); background: rgba(110,231,255,.08); }
+    .score { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; font-weight: 700; }
+    .typing .bubble { display: inline-flex; gap: 10px; align-items: center; width: auto; justify-self: start; color: var(--muted); font-size: 13px; }
+    .dots { display: inline-flex; gap: 4px; }
+    .dots i { width: 6px; height: 6px; border-radius: 50%; background: var(--c, var(--a1)); animation: dot 1s infinite ease-in-out; }
+    .dots i:nth-child(2) { animation-delay: .15s; } .dots i:nth-child(3) { animation-delay: .3s; }
+    @keyframes dot { 0%, 80%, 100% { opacity: .25; transform: translateY(0); } 40% { opacity: 1; transform: translateY(-3px); } }
+    .system { font-size: 13px; color: var(--muted); border: 1px dashed rgba(167,139,250,.45); border-radius: 12px; padding: 8px 12px; }
+
+    .metric { margin-bottom: 12px; }
+    .metric-head { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 4px; }
+    .metric-head b { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .bar { height: 8px; border-radius: 999px; background: rgba(255,255,255,.08); overflow: hidden; }
+    .bar i { display: block; height: 100%; width: 0; border-radius: 999px; background: linear-gradient(90deg, var(--a2), var(--a1)); transition: width .8s cubic-bezier(.2,.8,.2,1); }
+    .metric.bump .metric-head b { color: var(--a1); }
+    .metric.dip .metric-head b { color: #fbbf24; }
+    .counters { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 14px; }
+    .counter { padding: 8px 10px; border-radius: 10px; background: rgba(0,0,0,.18); border: 1px solid rgba(255,255,255,.08); }
+    .counter b { display: block; font-size: 18px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .counter span { font-size: 11.5px; color: var(--muted); }
+    .roster { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 6px; }
+    .roster li { display: grid; grid-template-columns: 28px 1fr; gap: 8px; align-items: center; font-size: 12.5px; color: var(--muted); opacity: .6; transition: opacity .2s ease; }
+    .roster li.on { opacity: 1; color: var(--txt); }
+    .roster .avatar { width: 28px; height: 28px; }
+
+    #brief[hidden] { display: none; }
+    .outcome { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 8px; }
+    .outcome-label { font-size: 20px; font-weight: 800; padding: 6px 14px; border-radius: 12px; border: 1px solid rgba(110,231,255,.45); background: rgba(110,231,255,.10); }
+    .outcome-label.more_evidence { border-color: rgba(245,158,11,.45); background: rgba(245,158,11,.10); }
+    .brief-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 14px; }
+    @media (max-width: 860px) { .brief-grid { grid-template-columns: 1fr; } }
+    .panel { border-radius: 14px; border: 1px solid rgba(255,255,255,.08); background: rgba(0,0,0,.16); padding: 12px 14px; min-width: 0; }
+    .panel h3 { font-size: 15px; margin: 0 0 8px; }
+    .panel svg { display: block; width: 100%; height: auto; }
+    .panel svg text { fill: var(--muted); font-family: inherit; }
+    .offer-figures { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; color: var(--muted); margin-top: 6px; }
+    .offer-figures b { color: var(--txt); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-size: 13px; }
+    .list li { padding: 8px 10px; border-radius: 10px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07); line-height: 1.5; }
+    .list li span { display: block; color: var(--muted); }
+    .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; }
+    .stat { padding: 10px 12px; border-radius: 12px; background: rgba(0,0,0,.18); border: 1px solid rgba(255,255,255,.08); }
+    .stat b { display: block; font-size: 22px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .stat span { font-size: 12px; color: var(--muted); }
+    .decision { margin-top: 14px; padding: 14px; border-radius: 14px; border: 1px solid rgba(110,231,255,.35); background: rgba(110,231,255,.05); }
+    .decision h3 { margin: 0 0 6px; font-size: 16px; }
+    .decision-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+    .decision-actions .btn { cursor: pointer; font-family: inherit; min-height: 44px; }
+    .decision-actions .btn[aria-pressed="true"] { border-color: rgba(110,231,255,.7); background: rgba(110,231,255,.16); }
+    #decisionRecord { margin-top: 10px; font-size: 13px; color: var(--txt); }
+    .how a.text-link { color: var(--a1); text-decoration: underline; text-underline-offset: 3px; }
+    .formula { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12.5px; line-height: 1.7; color: var(--muted); padding-left: 18px; word-break: break-word; }
+    @media (prefers-reduced-motion: reduce) { .msg, .claim, .bar i, .sentence, .sentence.struck { animation: none; transition: none; } }
+  </style>
+</head>
+
+<body>
+  <header class="nav">
+    <div class="inner">
+      <a class="brand" href="/" aria-label="Neuromorphic Inference Lab home">
+        <img src="/logo.svg" alt="Neuromorphic Inference Lab" />
+        <span>Neuromorphic Inference Lab</span>
+      </a>
+      <nav class="navlinks" aria-label="Primary navigation">
+        <a data-nav href="/">Home</a>
+        <a data-nav href="/demos/">Systems</a>
+        <a data-nav href="/about/">About Me</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <p class="kicker">HR &amp; People automation · Multi-agent decision support</p>
+      <h1 class="h1">Hiring Panel</h1>
+      <p class="sub">
+        Six AI agents review one synthetic candidate for one role and debate it live. Every claim must quote
+        the candidate’s documents, a fairness auditor challenges the others, and code computes the scores and
+        the offer range. The panel never decides: it prepares a brief for a person.
+      </p>
+      <div class="badges">
+        <span class="badge">Multi-agent debate</span>
+        <span class="badge">Evidence traceability</span>
+        <span class="badge">Bias checks in code</span>
+        <span class="badge">Human decision</span>
+        <span class="badge">Cloudflare Pages Functions</span>
+      </div>
+    </section>
+
+    <div class="hp-notice" role="note">
+      <span><strong>Synthetic candidates. Decision support only. A person makes every hiring decision.</strong></span>
+      <span id="modeBadge" class="mode-badge" aria-live="polite">Checking…</span>
+    </div>
+
+    <section class="section card" aria-labelledby="setup-title">
+      <h2 id="setup-title">1 · Choose a role and a candidate</h2>
+      <form id="runForm">
+        <fieldset>
+          <legend>Role</legend>
+          <div class="choice-grid two" id="roleChoices"><p class="small">Loading synthetic roles…</p></div>
+        </fieldset>
+        <fieldset>
+          <legend>Candidate</legend>
+          <div class="choice-grid" id="candidateChoices"></div>
+        </fieldset>
+        <details class="docs" id="docs">
+          <summary>Read the selected candidate’s documents (the only evidence the panel may cite)</summary>
+          <dl id="docList"></dl>
+        </details>
+        <div class="run-row">
+          <button class="btn primary" id="runButton" type="submit" disabled>Convene the panel</button>
+          <div class="speed" role="radiogroup" aria-label="Replay speed">
+            <label><input type="radio" name="speed" value="normal" checked /><span>Normal</span></label>
+            <label><input type="radio" name="speed" value="fast" /><span>Fast</span></label>
+          </div>
+          <button class="btn" id="skipButton" type="button" disabled>Skip to brief</button>
+          <span id="runStatus" role="status"></span>
+        </div>
+      </form>
+    </section>
+
+    <div class="hp-layout">
+      <section class="card" aria-labelledby="transcript-title">
+        <h2 id="transcript-title" class="hp-title">2 · Panel debate</h2>
+        <div class="rounds" id="rounds">
+          <span class="round" data-round="1">Round 1 · Opening assessments</span>
+          <span class="round" data-round="2">Round 2 · Audit and responses</span>
+          <span class="round" data-round="3">Round 3 · Pay band and brief</span>
+        </div>
+        <ol id="transcript" aria-live="polite" aria-label="Panel transcript">
+          <li class="empty">Press “Convene the panel” to watch six agents debate. Each turn is one request; the server checks every quote and statement before the scores move.</li>
+        </ol>
+      </section>
+
+      <aside class="card" aria-labelledby="scores-title">
+        <h2 id="scores-title" class="hp-title">Scores computed by code</h2>
+        <div id="metrics"></div>
+        <div class="counters" aria-label="Audit counters">
+          <div class="counter"><b id="cMade">0</b><span>claims made</span></div>
+          <div class="counter"><b id="cAccepted">0</b><span>claims accepted</span></div>
+          <div class="counter"><b id="cUnsupported">0</b><span>unsupported claims</span></div>
+          <div class="counter"><b id="cStruck">0</b><span>struck from the record</span></div>
+        </div>
+        <ul class="roster" id="roster" aria-label="Panel members"></ul>
+      </aside>
+    </div>
+
+    <section class="section card" id="brief" hidden aria-labelledby="brief-title">
+      <h2 id="brief-title">3 · Brief for the hiring manager</h2>
+      <div class="outcome">
+        <span class="small">Panel outcome:</span>
+        <span id="outcomeLabel" class="outcome-label"></span>
+      </div>
+      <p class="small" id="outcomeRule"></p>
+      <p class="small" id="outcomeNote"></p>
+
+      <div class="brief-grid">
+        <div class="panel">
+          <h3>Profile against the role</h3>
+          <svg id="radar" viewBox="0 0 460 300" role="img" aria-labelledby="radarDesc"><desc id="radarDesc">Radar chart of the five computed metrics.</desc></svg>
+        </div>
+        <div class="panel">
+          <h3>Offer range (synthetic benchmark)</h3>
+          <svg id="band" viewBox="0 0 400 150" role="img" aria-labelledby="bandDesc"><desc id="bandDesc">Offer band against P25, P50 and P75.</desc></svg>
+          <div class="offer-figures" id="offerFigures"></div>
+          <p class="small" id="bandFormula"></p>
+        </div>
+        <div class="panel">
+          <h3>Points to verify at interview</h3>
+          <ul class="list" id="verifyList"></ul>
+        </div>
+        <div class="panel">
+          <h3>Dissent log</h3>
+          <ul class="list" id="dissentList"></ul>
+        </div>
+      </div>
+
+      <div class="panel mt-12">
+        <h3>Audit trail</h3>
+        <div class="stat-row">
+          <div class="stat"><b id="sMade">0</b><span>claims made</span></div>
+          <div class="stat"><b id="sAccepted">0</b><span>claims accepted</span></div>
+          <div class="stat"><b id="sUnsupported">0</b><span>unsupported claims</span></div>
+          <div class="stat"><b id="sStruck">0</b><span>statements struck</span></div>
+          <div class="stat"><b id="sTokens">0</b><span>LLM tokens this run</span></div>
+        </div>
+        <p class="small mt-12" id="sMode"></p>
+      </div>
+
+      <div class="decision" aria-labelledby="decision-title">
+        <h3 id="decision-title">Human decision</h3>
+        <p class="small">The panel’s outcome is advice. You decide. Your choice is shown on this page only: nothing is stored or sent.</p>
+        <div class="decision-actions" id="decisionActions">
+          <button class="btn" type="button" data-decision="Invite to interview" aria-pressed="false">Invite to interview</button>
+          <button class="btn" type="button" data-decision="Request more evidence" aria-pressed="false">Request more evidence</button>
+          <button class="btn" type="button" data-decision="Do not progress" aria-pressed="false">Do not progress</button>
+        </div>
+        <p id="decisionRecord" role="status"></p>
+      </div>
+    </section>
+
+    <section class="section card how" aria-labelledby="how-title">
+      <h2 id="how-title">How it works</h2>
+      <ul class="clean">
+        <li><strong>Orchestrated by code:</strong> the page drives a fixed turn order (three opening assessments, an audit with responses, then pay band and brief) with a hard cap of nine turns. Each turn is one request to a Cloudflare Pages Function.</li>
+        <li><strong>One agent, one compact prompt per turn:</strong> the Function builds a short prompt for DeepSeek (OpenAI-compatible API, small output limit, thinking disabled) from allow-listed data and the run state. Visitors only pick a role and a candidate, so no free text reaches the model.</li>
+        <li><strong>No server session:</strong> the run state travels with each request, signed with an HMAC. The server validates its structure and signature before acting, so altered state is refused.</li>
+        <li><strong>Guardrails in code, not in the prompt:</strong> every quote is matched against the cited document (case and whitespace normalised), a list of protected characteristics and proxies strikes statements from the record, and pay figures that the policy did not compute are struck.</li>
+        <li><strong>Never fails because of the LLM:</strong> if the key is missing, the provider errors or a turn is invalid twice, the page replays a recorded live run through the same checks and scoring, and the badge says “Recorded run”.</li>
+      </ul>
+      <h3 class="mt-12">Scoring formula (agents propose, code aggregates)</h3>
+      <ul class="formula">
+        <li>mean(r, a) = mean of agent a's accepted scores (1 to 5) for requirement r, or 0 if none</li>
+        <li>Role fit = 20 × Σ w_r · mean(r, Hiring Manager) ÷ Σ w_r</li>
+        <li>Technical depth = 20 × Σ w_r · mean(r, Technical Assessor) ÷ Σ w_r, over technical requirements</li>
+        <li>Growth potential = 20 × mean of the People Partner's accepted scores</li>
+        <li>Evidence strength = 100 × (½ · accepted ÷ claims made + ½ · weighted share of requirements with an accepted score of 3 or more)</li>
+        <li>Ramp-up weeks = 2 + round(10 × (1 − Σ w_r · best_r ÷ 5 ÷ Σ w_r)); ramp-up score = 100 × (12 − weeks) ÷ 10</li>
+        <li>Offer: floor = P25; ceiling = min(P75, equity cap); recommended = floor + (ceiling − floor) × clamp((role fit − 50) ÷ 50, 0, 1), rounded to £500. Previous pay is never an input.</li>
+      </ul>
+      <h3 class="mt-12">Responsible use</h3>
+      <p class="lead">
+        Using AI to evaluate job candidates is a high-risk use under the EU AI Act (Annex III, employment), so this
+        demo is built around the controls such a system needs. Human oversight: the panel can only suggest
+        “Advance to interview” or “Needs more evidence”, there is no automated rejection, and a person records the
+        decision. Evidence traceability: every scored claim carries a quote that code verifies against the cited
+        document, and unverified claims are excluded. Bias checks: the Fairness and Compliance Auditor challenges the
+        panel, and a code-side filter strikes any statement that relies on age, gender, family status, career
+        breaks, nationality, appearance, a name or previous pay. Logging: every claim, revision, strike and token
+        count is kept in the run record and shown in the audit trail. All candidates, the company and the pay
+        benchmark are synthetic.
+      </p>
+      <p class="mt-12">
+        Source code and tests:
+        <a class="text-link" href="https://github.com/nepryoon/hr-hiring-panel" target="_blank" rel="noopener noreferrer">github.com/nepryoon/hr-hiring-panel<span class="sr-only"> (opens in a new tab)</span></a>
+      </p>
+    </section>
+
+    <footer class="footer">
+      <div>© 2025 Neuromorphic Inference Lab</div>
+      <div class="prov">
+        <span id="build-branch">branch: …</span>
+        <span id="build-commit">commit: …</span>
+        <span id="build-time">built: …</span>
+      </div>
+    </footer>
+  </main>
+
+  <script src="/build-info.js"></script>
+  <script type="module" src="/demos/hiring-panel/app.js"></script>
+</body>
+</html>
