@@ -1,0 +1,314 @@
+{
+  "synthetic": true,
+  "note": "Recorded live panel run on synthetic data. Replayed through the same citation check, filter and scoring code.",
+  "roleId": "hr-systems-automation-manager",
+  "candidateId": "alex-rowan",
+  "model": "deepseek-flash",
+  "recordedAt": "2026-10-07",
+  "turns": [
+    {
+      "agent": "hm",
+      "round": 1,
+      "kind": "opening",
+      "output": {
+        "message": "Opening assessment: strong technical and HR systems evidence across automation, LLM integration and integration work, with credible governance and stakeholder signals. Some requirements rest on single passages, so scores stay moderate where depth is unclear.",
+        "claims": [
+          {
+            "req": "r1",
+            "score": 5,
+            "doc": "cv",
+            "quote": "Designed and delivered an automation programme covering 22 HR processes",
+            "reason": "Large-scale automation delivery with clear ownership."
+          },
+          {
+            "req": "r2",
+            "score": 4,
+            "doc": "cv",
+            "quote": "Built an LLM triage service for employee queries that routes 70% of tickets",
+            "reason": "Hands-on LLM delivery, though evaluation detail sits in interview."
+          },
+          {
+            "req": "r3",
+            "score": 3,
+            "doc": "cv",
+            "quote": "Previously HR Systems Lead, Northgate Mutual (2008 to 2019), where they owned SQL reporting and the HR data model",
+            "reason": "HR systems background, but process depth not detailed."
+          },
+          {
+            "req": "r4",
+            "score": 4,
+            "doc": "cv",
+            "quote": "Built an integration layer between the HRIS, payroll and the learning platform using event-driven APIs",
+            "reason": "Concrete HRIS and API integration experience."
+          },
+          {
+            "req": "r5",
+            "score": 4,
+            "doc": "cv",
+            "quote": "Led a team of six engineers and analysts",
+            "reason": "Team leadership evidenced; stakeholder work shown in interview."
+          },
+          {
+            "req": "r6",
+            "score": 4,
+            "doc": "cv",
+            "quote": "Wrote the company's guidance on fair use of AI in recruitment, reviewed by the works council",
+            "reason": "Responsible AI guidance with external review."
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 830,
+        "completionTokens": 384
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "tech",
+      "round": 1,
+      "kind": "opening",
+      "output": {
+        "message": "Opening assessment of technical depth. Strong, specific delivery evidence for automation and LLM integration, with evaluation detail and logging. Systems integration claim is solid but less quantified. Enthusiasm and courses are not treated as skill evidence.",
+        "claims": [
+          {
+            "req": "r1",
+            "score": 5,
+            "doc": "cv",
+            "quote": "delivered an automation programme covering 22 HR processes",
+            "reason": "Concrete scale of delivered automation, owned end to end."
+          },
+          {
+            "req": "r2",
+            "score": 5,
+            "doc": "interview",
+            "quote": "evaluated against a labelled set of 1,200 historical tickets before go-live",
+            "reason": "Specific pre-launch evaluation method with labelled data."
+          },
+          {
+            "req": "r4",
+            "score": 4,
+            "doc": "cv",
+            "quote": "integration layer between the HRIS, payroll and the learning platform using event-driven APIs",
+            "reason": "Clear multi-system API integration, though impact not quantified."
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 831,
+        "completionTokens": 218
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "people",
+      "round": 1,
+      "kind": "opening",
+      "output": {
+        "message": "Strong opening picture: this candidate pairs delivery leadership with genuine care for transparency and responsible AI. Onboarding should focus on Fernhollow's HR process map, its governance forums and works council rhythm, plus a short handover on our HRIS and API estate. Pair them with an HR business partner early and agree a first 90 day automation win. Growth looks strong.",
+        "claims": [
+          {
+            "req": "r5",
+            "score": 5,
+            "doc": "cv",
+            "quote": "Led a team of six engineers and analysts",
+            "reason": "Clear evidence of leading a technical team."
+          },
+          {
+            "req": "r6",
+            "score": 5,
+            "doc": "cv",
+            "quote": "Wrote the company's guidance on fair use of AI in recruitment",
+            "reason": "Direct responsible AI governance contribution."
+          },
+          {
+            "req": "collaboration",
+            "score": 4,
+            "doc": "interview",
+            "quote": "Described weekly prioritisation sessions with HR business partners",
+            "reason": "Regular structured collaboration with business partners."
+          },
+          {
+            "req": "growth",
+            "score": 4,
+            "doc": "cover",
+            "quote": "rebuilt my skills in LLM evaluation and completed a course on the EU AI Act",
+            "reason": "Deliberate recent upskilling in relevant areas."
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 842,
+        "completionTokens": 279
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "auditor",
+      "round": 2,
+      "kind": "review",
+      "output": {
+        "message": "Two claims overreach their quotes. c8 scores 5/5 on an evaluation quote that shows rigour, not delivery. c10 scores 5/5 on a single team-size line. The interview notes contain protected material: remarks on children and Tuesday finishes, and the interviewer's comment on being senior in years and energy levels. Disregard these entirely; they are struck from the record.",
+        "challenges": [
+          {
+            "claim": "c8",
+            "issue": "weak",
+            "note": "Quote evidences evaluation rigour, not LLM integration delivery; 5/5 overstates."
+          },
+          {
+            "claim": "c10",
+            "issue": "weak",
+            "note": "Team size alone is thin evidence for 5/5 leadership and stakeholder management."
+          },
+          {
+            "claim": "c13",
+            "issue": "weak",
+            "note": "Course completion and self-reported skill rebuilding is modest growth evidence."
+          },
+          {
+            "claim": "c12",
+            "issue": "weak",
+            "note": "Weekly sessions described, but no outcome or stakeholder impact shown."
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 1476,
+        "completionTokens": 222
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "hm",
+      "round": 2,
+      "kind": "response",
+      "output": {
+        "message": "No challenges were raised, so I confirm all six scores unchanged. The evidence supports strong delivery, LLM integration, integration work, leadership and responsible AI practice, with HR process knowledge adequate. I add no new claims.",
+        "revisions": [],
+        "claims": []
+      },
+      "usage": {
+        "promptTokens": 1085,
+        "completionTokens": 58
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "tech",
+      "round": 2,
+      "kind": "response",
+      "output": {
+        "message": "I accept c8 overstates integration delivery; the quote shows evaluation rigour, so I lower it to 4. I add two claims covering LLM service build and API integration depth to replace the rejected emphasis.",
+        "revisions": [
+          {
+            "claim": "c8",
+            "score": 4,
+            "reason": "Quote proves evaluation rigour, not integration delivery; strong but not top evidence."
+          }
+        ],
+        "claims": [
+          {
+            "doc": "cv",
+            "quote": "Built an LLM triage service for employee queries that routes 70% of tickets",
+            "req": "r2",
+            "score": 4
+          },
+          {
+            "doc": "interview",
+            "quote": "Strong answer on data minimisation and retention for employee query logs",
+            "req": "r4",
+            "score": 4
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 984,
+        "completionTokens": 169
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "people",
+      "round": 2,
+      "kind": "response",
+      "output": {
+        "message": "I accept the challenges. Leadership evidence is thin beyond team size, so I lower c10. Stakeholder sessions show contact, not impact, so c12 drops slightly. Growth evidence is modest, so c13 drops. c11 stands.",
+        "revisions": [
+          {
+            "claim": "c10",
+            "score": 4,
+            "reason": "Team leadership shown, but stakeholder management evidence rests on one quote only."
+          },
+          {
+            "claim": "c12",
+            "score": 3,
+            "reason": "Weekly sessions show engagement, but no outcome or stakeholder impact is evidenced."
+          },
+          {
+            "claim": "c13",
+            "score": 3,
+            "reason": "Course completion and self-reported rebuilding are modest, single-source growth evidence."
+          }
+        ],
+        "claims": []
+      },
+      "usage": {
+        "promptTokens": 1037,
+        "completionTokens": 159
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "comp",
+      "round": 3,
+      "kind": "band",
+      "output": {
+        "message": "The recommended figure is £85,000, sitting at the P50 benchmark, between the £78,000 floor and the £89,000 ceiling. The ceiling is £89,000 because the equity cap applies, holding the top of the band below the £92,000 P75. Role fit is 81/100."
+      },
+      "usage": {
+        "promptTokens": 1015,
+        "completionTokens": 72
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "chair",
+      "round": 3,
+      "kind": "brief",
+      "output": {
+        "message": "Evidence is strong and consistent: delivery, LLM integration, APIs, leadership and responsible AI all score well, with HR process knowledge adequate. Panellists agree on the substance; disagreement is confined to how far single quotes support the higher scores, now revised down. Recommend advance, with onboarding on Fernhollow's process map and governance forums.",
+        "recommendation": "advance",
+        "dissent": [
+          "Dissent is narrow: whether team-size and evaluation quotes alone justify top scores, and how much stakeholder contact shows impact."
+        ],
+        "questions": []
+      },
+      "usage": {
+        "promptTokens": 1750,
+        "completionTokens": 117
+      },
+      "invalidReplies": []
+    }
+  ],
+  "summary": {
+    "counters": {
+      "claimsMade": 15,
+      "claimsAccepted": 15,
+      "unsupported": 0,
+      "struck": 5
+    },
+    "metrics": {
+      "roleFit": 81,
+      "technicalDepth": 88,
+      "growthPotential": 75,
+      "evidenceStrength": 100,
+      "rampUp": 80,
+      "rampUpWeeks": 4
+    },
+    "outcome": "Advance to interview",
+    "usage": {
+      "promptTokens": 9850,
+      "completionTokens": 1678,
+      "llmTurns": 9
+    }
+  }
+}

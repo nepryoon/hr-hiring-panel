@@ -1,0 +1,341 @@
+{
+  "synthetic": true,
+  "note": "Recorded live panel run on synthetic data. Replayed through the same citation check, filter and scoring code.",
+  "roleId": "hr-systems-automation-manager",
+  "candidateId": "jordan-vale",
+  "model": "deepseek-flash",
+  "recordedAt": "2026-10-07",
+  "turns": [
+    {
+      "agent": "hm",
+      "round": 1,
+      "kind": "opening",
+      "output": {
+        "message": "Opening assessment: solid HR process knowledge and practical automation, but thin on LLM integration, APIs and formal leadership. Evidence supports partial fit; development needs are clear.",
+        "claims": [
+          {
+            "req": "r1",
+            "score": 3,
+            "doc": "cv",
+            "quote": "Built spreadsheet macros that merge weekly absence reports from twelve stores",
+            "reason": "Practical workflow automation, but limited scale and no end-to-end delivery."
+          },
+          {
+            "req": "r2",
+            "score": 2,
+            "doc": "interview",
+            "quote": "watched the supplier's team configure the chatbot",
+            "reason": "Exposure only; no hands-on LLM build or integration."
+          },
+          {
+            "req": "r3",
+            "score": 4,
+            "doc": "interview",
+            "quote": "described the starter checklist and the leaver steps accurately and in order",
+            "reason": "Strong, detailed HR process knowledge demonstrated."
+          },
+          {
+            "req": "r4",
+            "score": 2,
+            "doc": "interview",
+            "quote": "said they had not built one",
+            "reason": "No API integration experience; only observed supplier configuration."
+          },
+          {
+            "req": "r5",
+            "score": 2,
+            "doc": "interview",
+            "quote": "Has not led a team; coordinated a two-person rota",
+            "reason": "Coordination only; no leadership or senior stakeholder ownership."
+          },
+          {
+            "req": "r6",
+            "score": 1,
+            "doc": "interview",
+            "quote": "Could not describe how the chatbot's answers were tested or who signed them off",
+            "reason": "No evidence of responsible AI or data protection practice."
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 848,
+        "completionTokens": 348
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "tech",
+      "round": 1,
+      "kind": "opening",
+      "output": {
+        "message": "Technical evidence is thin. r1 rests on spreadsheet macros merging absence reports, not real workflow automation. r2 shows only participation in a supplier-run chatbot pilot, with no testing or sign-off knowledge. r4 shows no API or HRIS integration delivery; watching a supplier configure a chatbot is not skill. Enthusiasm and reading about LLMs carry no weight. Scores reflect weak, largely observational evidence across all three technical requirements.",
+        "claims": [
+          {
+            "req": "r1",
+            "score": 2,
+            "doc": "cv",
+            "quote": "Built spreadsheet macros that merge weekly absence reports from twelve stores",
+            "reason": "Macro-based report merging is modest, not workflow automation delivery."
+          },
+          {
+            "req": "r2",
+            "score": 2,
+            "doc": "interview",
+            "quote": "had watched the supplier's team configure the chatbot",
+            "reason": "Observation only; no LLM build, testing or integration evidence."
+          },
+          {
+            "req": "r4",
+            "score": 1,
+            "doc": "interview",
+            "quote": "said they had not built one",
+            "reason": "Explicitly no API integration experience delivered."
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 849,
+        "completionTokens": 243
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "people",
+      "round": 1,
+      "kind": "opening",
+      "output": {
+        "message": "A thoughtful internal candidate with real HR process depth and clear enthusiasm, but limited hands-on automation and no leadership record. Onboarding should pair a structured technical development plan with a mentor for API and integration work, plus supervised ownership of a small workflow project and sign-off responsibilities for AI outputs. Stakeholder skills look solid; give early exposure to programme-level governance.",
+        "claims": [
+          {
+            "req": "r3",
+            "score": 5,
+            "doc": "interview",
+            "quote": "described the starter checklist and the leaver steps accurately and in order",
+            "reason": "Demonstrates strong, ordered HR process knowledge."
+          },
+          {
+            "req": "growth",
+            "score": 4,
+            "doc": "cover",
+            "quote": "I would welcome a structured development plan for the technical parts of the role",
+            "reason": "Shows self-awareness and appetite for structured technical growth."
+          },
+          {
+            "req": "collaboration",
+            "score": 4,
+            "doc": "cover",
+            "quote": "I work well with managers and I am the person colleagues ask",
+            "reason": "Evidence of trusted working relationships with managers and peers."
+          },
+          {
+            "req": "r5",
+            "score": 2,
+            "doc": "interview",
+            "quote": "Has not led a team; coordinated a two-person rota",
+            "reason": "Some coordination experience but no formal leadership record."
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 860,
+        "completionTokens": 287
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "auditor",
+      "round": 2,
+      "kind": "review",
+      "output": {
+        "message": "Claims mostly match the evidence, but scores diverge on the same quotes: c1 at 3 versus c7 at 2, and c3 at 4 versus c10 at 5, need reconciling. c11 and c12 stretch a cover-note aspiration and self-description to 4/5. The CV's mention of a two-year stint and the interview's pay review rota are fine; disregard any panel remark about age, family or health.",
+        "challenges": [
+          {
+            "claim": "c1",
+            "issue": "inconsistent",
+            "note": "Same quote scored 3 by Iris and 2 by Theo; reconcile."
+          },
+          {
+            "claim": "c3",
+            "issue": "inconsistent",
+            "note": "Same interview quote scored 4 by Iris and 5 by Pia."
+          },
+          {
+            "claim": "c11",
+            "issue": "weak",
+            "note": "Cover-note aspiration to a development plan is not evidence of growth at 4/5."
+          },
+          {
+            "claim": "c12",
+            "issue": "weak",
+            "note": "Self-description in cover note is not strong evidence of collaboration."
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 1413,
+        "completionTokens": 242
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "hm",
+      "round": 2,
+      "kind": "response",
+      "output": {
+        "message": "Reconciling: c1 stays 3, macros show real delivery but only one simple workflow. c3 stays 4, accurate process detail is strong but not exceptional. No new claims needed.",
+        "revisions": [
+          {
+            "claim": "c1",
+            "score": 3,
+            "reason": "Real delivered automation, but a single macro workflow, not a programme"
+          },
+          {
+            "claim": "c3",
+            "score": 4,
+            "reason": "Accurate ordered process detail, strong but short of exceptional depth"
+          }
+        ],
+        "claims": []
+      },
+      "usage": {
+        "promptTokens": 1108,
+        "completionTokens": 117
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "tech",
+      "round": 2,
+      "kind": "response",
+      "output": {
+        "message": "No challenges were raised, so my three scores stand unchanged. The evidence remains thin on automation delivery, LLM integration and API work, matching the low role fit.",
+        "revisions": [],
+        "claims": []
+      },
+      "usage": {
+        "promptTokens": 961,
+        "completionTokens": 47
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "people",
+      "round": 2,
+      "kind": "response",
+      "output": {
+        "message": "I accept both challenges. The development-plan line is aspiration, not demonstrated growth, so I lower c11 to 2. Collaboration rests only on self-description, so I lower c12 to 3; the interview note on helping store managers supports a moderate score.",
+        "revisions": [
+          {
+            "claim": "c11",
+            "score": 2,
+            "reason": "Aspiration to a development plan is not evidence of demonstrated growth"
+          },
+          {
+            "claim": "c12",
+            "score": 3,
+            "reason": "Cover-note self-description alone is moderate evidence; interview notes add supporting example"
+          }
+        ],
+        "claims": [
+          {
+            "claim": "c14",
+            "score": 2,
+            "reason": "Watched supplier configure chatbot but has not built an integration",
+            "quote": "had not built one but had watched the supplier's team configure the chatbot",
+            "doc": "interview",
+            "req": "r5"
+          },
+          {
+            "claim": "c15",
+            "score": 1,
+            "reason": "No evidence of testing or sign-off of chatbot answers",
+            "quote": "Could not describe how the chatbot's answers were tested or who signed them off",
+            "doc": "interview",
+            "req": "r6"
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 2381,
+        "completionTokens": 512
+      },
+      "invalidReplies": [
+        "claim 1: req must be one of collaboration, growth, r3, r5, r6"
+      ]
+    },
+    {
+      "agent": "comp",
+      "round": 3,
+      "kind": "band",
+      "output": {
+        "message": "The recommended figure sits at £78,000, the offer floor, matching the P25 benchmark. The ceiling is £89,000, the equity cap, which sits below the P75 of £92,000. Role fit is 47 out of 100, so the code places the offer at the band's lower edge rather than the £85,000 midpoint."
+      },
+      "usage": {
+        "promptTokens": 949,
+        "completionTokens": 80
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "chair",
+      "round": 3,
+      "kind": "brief",
+      "output": {
+        "message": "Evidence shows strong HR process knowledge and modest automation delivery, but thin LLM, API, leadership and responsible AI evidence; role fit is 47 of 100. Panellists disagreed on scoring the same quotes, now largely reconciled. The gap between HR depth and technical delivery suggests more evidence before a decision.",
+        "recommendation": "more_evidence",
+        "dissent": [
+          "Scores for identical quotes diverged earlier; reconciled, but panel still splits on whether enthusiasm offsets limited technical depth."
+        ],
+        "questions": [
+          {
+            "req": "r1",
+            "question": "Which workflow have you automated end to end, and what was the measured result?"
+          },
+          {
+            "req": "r2",
+            "question": "What LLM integration work have you personally built or configured, beyond observing others?"
+          },
+          {
+            "req": "r4",
+            "question": "Which HRIS or API integration have you designed or implemented yourself?"
+          },
+          {
+            "req": "r5",
+            "question": "Which team or stakeholder group have you led through a change, and how was it received?"
+          },
+          {
+            "req": "r6",
+            "question": "How have you tested AI outputs or handled data protection in your work?"
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 1853,
+        "completionTokens": 247
+      },
+      "invalidReplies": []
+    }
+  ],
+  "summary": {
+    "counters": {
+      "claimsMade": 15,
+      "claimsAccepted": 15,
+      "unsupported": 0,
+      "struck": 0
+    },
+    "metrics": {
+      "roleFit": 47,
+      "technicalDepth": 35,
+      "growthPotential": 50,
+      "evidenceStrength": 68,
+      "rampUp": 50,
+      "rampUpWeeks": 7
+    },
+    "outcome": "Needs more evidence",
+    "usage": {
+      "promptTokens": 11222,
+      "completionTokens": 2123,
+      "llmTurns": 9
+    }
+  }
+}

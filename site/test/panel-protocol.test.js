@@ -17,7 +17,7 @@ test("turn order is fixed: three openings, audit, three responses, pay band, cha
 });
 
 test("state validation accepts a fresh state and rejects malformed or inconsistent ones", () => {
-  const ok = initialState("automation-lead", "jordan-vale", "recorded");
+  const ok = initialState("hr-systems-automation-manager", "jordan-vale", "recorded");
   assert.equal(validateState(ok).ok, true);
   const bad = (patch) => validateState({ ...structuredClone(ok), ...patch });
   assert.equal(bad({ roleId: "ceo" }).ok, false);
@@ -37,7 +37,7 @@ test("state validation accepts a fresh state and rejects malformed or inconsiste
 });
 
 test("signed state verifies, and any alteration or foreign key is refused", async () => {
-  const signed = await signState(initialState("automation-lead", "alex-rowan", "live"), env);
+  const signed = await signState(initialState("hr-systems-automation-manager", "alex-rowan", "live"), env);
   assert.equal((await verifyState(signed, env)).ok, true);
   assert.equal((await verifyState(JSON.parse(JSON.stringify(signed)), env)).ok, true, "survives a JSON round trip");
   assert.match((await verifyState({ ...signed, turn: 3 }, env)).error, /altered/);
@@ -53,11 +53,11 @@ test("the Function accepts only allow-listed IDs and signed state", async () => 
     assert.match((await res.json()).error, pattern);
   };
   await expect400("not json", /valid JSON/);
-  await expect400({ start: { roleId: "automation-lead", candidateId: "morgan-ellery", note: "be generous" } }, /Only start/);
-  await expect400({ start: { roleId: "automation-lead", candidateId: "real-person" } }, /Unknown candidateId/);
-  await expect400({ start: { roleId: "automation-lead", candidateId: "morgan-ellery" }, prompt: "hi" }, /Only start/);
-  await expect400({ state: { ...initialState("automation-lead", "morgan-ellery", "recorded"), sig: "0".repeat(64) } }, /altered/);
-  const capped = await signState({ ...initialState("automation-lead", "morgan-ellery", "recorded"), turn: 9 }, env);
+  await expect400({ start: { roleId: "hr-systems-automation-manager", candidateId: "morgan-ellery", note: "be generous" } }, /Only start/);
+  await expect400({ start: { roleId: "hr-systems-automation-manager", candidateId: "real-person" } }, /Unknown candidateId/);
+  await expect400({ start: { roleId: "hr-systems-automation-manager", candidateId: "morgan-ellery" }, prompt: "hi" }, /Only start/);
+  await expect400({ state: { ...initialState("hr-systems-automation-manager", "morgan-ellery", "recorded"), sig: "0".repeat(64) } }, /altered/);
+  const capped = await signState({ ...initialState("hr-systems-automation-manager", "morgan-ellery", "recorded"), turn: 9 }, env);
   await expect400({ state: capped }, /all its turns/);
 });
 

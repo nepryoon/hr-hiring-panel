@@ -4,7 +4,7 @@ import { postTurn, fakeLlm } from "./panel-helpers.js";
 import { resolveModel, DEFAULT_MODEL } from "../config/panel/llm.js";
 
 const env = { DEEPSEEK_API_KEY: "sk-test", PANEL_STATE_SECRET: "test-secret" };
-const start = { start: { roleId: "automation-lead", candidateId: "alex-rowan", mode: "live" } };
+const start = { start: { roleId: "hr-systems-automation-manager", candidateId: "alex-rowan", mode: "live" } };
 
 const opening = {
   message: "Strong delivery record. The interview notes say they have two children at primary school, which may limit availability. Overall evidence is solid.",
@@ -85,7 +85,7 @@ test("provider errors, rate limits and a missing key all fall back instead of fa
 test("the Chair cannot propose a reject outcome", async () => {
   const { validateOutput } = await import("../config/panel/engine.js");
   const { initialState } = await import("../config/panel/protocol.js");
-  const state = { ...initialState("automation-lead", "alex-rowan", "live"), turn: 8 };
+  const state = { ...initialState("hr-systems-automation-manager", "alex-rowan", "live"), turn: 8 };
   const turn = { agent: "chair", round: 3, kind: "brief" };
   assert.equal(validateOutput(turn, { message: "Summary.", recommendation: "reject" }, state).ok, false);
   assert.equal(validateOutput(turn, { message: "Summary.", recommendation: "advance" }, state).ok, true);

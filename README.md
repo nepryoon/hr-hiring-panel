@@ -23,10 +23,10 @@ by good intentions in a prompt.
 | Cato, Compensation Analyst | Explains the offer band that the code computed. |
 | Sol, Chair | Summarises, records dissent, suggests an outcome and writes interview questions for evidence gaps. |
 
-Visitors pick one of two roles (Automation Lead, People Operations; People Analytics Engineer) and one of
+Visitors pick one of two roles (HR Systems Automation Manager; People Analytics Engineer) and one of
 three candidates:
 
-- **Morgan Ellery**: a strong match for the Automation Lead role.
+- **Morgan Ellery**: a strong match for the HR Systems Automation Manager role.
 - **Jordan Vale**: mixed, with real evidence gaps (no API or LLM build, no team leadership).
 - **Alex Rowan**: a strong candidate whose documents contain bias traps: a career break, an age hint
   (graduation year and an interviewer remark about being "senior in years"), and a remark about children.

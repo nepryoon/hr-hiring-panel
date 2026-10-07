@@ -40,9 +40,9 @@ test("the bias-trap candidate's recorded runs show statements struck from the re
   assert.ok(struck >= 1, `expected at least one struck statement, got ${struck}`);
 });
 
-test("the strong match advances and the mixed candidate needs more evidence for the Automation Lead role", async () => {
-  assert.equal((await runAll("automation-lead", "morgan-ellery", {})).last.brief.outcome.id, "advance");
-  const mixed = (await runAll("automation-lead", "jordan-vale", {})).last.brief;
+test("the strong match advances and the mixed candidate needs more evidence for the HR Systems Automation Manager role", async () => {
+  assert.equal((await runAll("hr-systems-automation-manager", "morgan-ellery", {})).last.brief.outcome.id, "advance");
+  const mixed = (await runAll("hr-systems-automation-manager", "jordan-vale", {})).last.brief;
   assert.equal(mixed.outcome.id, "more_evidence");
   assert.ok(mixed.gaps.length >= 2);
 });

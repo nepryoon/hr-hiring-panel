@@ -1,0 +1,318 @@
+{
+  "synthetic": true,
+  "note": "Recorded live panel run on synthetic data. Replayed through the same citation check, filter and scoring code.",
+  "roleId": "hr-systems-automation-manager",
+  "candidateId": "morgan-ellery",
+  "model": "deepseek-flash",
+  "recordedAt": "2026-10-07",
+  "turns": [
+    {
+      "agent": "hm",
+      "round": 1,
+      "kind": "opening",
+      "output": {
+        "message": "Opening assessment for round 1. Strong evidence on workflow delivery, LLM integration with human review, HR process work and responsible AI. Stakeholder leadership is well evidenced; systems integration is solid though data modelling depth is lighter. Skipping nothing; all six requirements carry at least one claim.",
+        "claims": [
+          {
+            "req": "r1",
+            "score": 5,
+            "doc": "cv",
+            "quote": "Led the automation of 14 HR workflows, including onboarding, leaver processing and contract changes",
+            "reason": "Direct delivery of multiple HR workflows at scale."
+          },
+          {
+            "req": "r2",
+            "score": 5,
+            "doc": "cv",
+            "quote": "Built an LLM-assisted HR policy assistant with retrieval over 300 policy documents",
+            "reason": "Hands-on LLM build with retrieval and human review."
+          },
+          {
+            "req": "r3",
+            "score": 4,
+            "doc": "cv",
+            "quote": "mapped recruitment and absence processes and introduced a ticketing workflow used by 40 HR advisers",
+            "reason": "Practical HR process mapping and adoption."
+          },
+          {
+            "req": "r4",
+            "score": 4,
+            "doc": "cv",
+            "quote": "Integrated the HRIS with payroll and the IT service desk through REST APIs and webhooks",
+            "reason": "HRIS and API integration with retries and alerting."
+          },
+          {
+            "req": "r5",
+            "score": 4,
+            "doc": "cover",
+            "quote": "I chaired a fortnightly design review with HR business partners, legal and IT",
+            "reason": "Chairs cross-functional forum; mentors and reviews code."
+          },
+          {
+            "req": "r6",
+            "score": 5,
+            "doc": "cv",
+            "quote": "Ran a data protection impact assessment with the DPO for each AI use case",
+            "reason": "Formal DPIA practice per AI use case."
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 864,
+        "completionTokens": 400
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "tech",
+      "round": 1,
+      "kind": "opening",
+      "output": {
+        "message": "Strong, specific delivery evidence for workflow automation and LLM integration, with measurable outcomes and human review. Systems integration is credible via REST APIs and webhooks, though SQL data modelling at scale is a stated gap. Enthusiasm alone is not counted; claims rest on delivered work.",
+        "claims": [
+          {
+            "req": "r1",
+            "score": 5,
+            "doc": "cv",
+            "quote": "Led the automation of 14 HR workflows, including onboarding, leaver processing and contract changes",
+            "reason": "Concrete delivery at scale with named processes and measured time saving."
+          },
+          {
+            "req": "r2",
+            "score": 4,
+            "doc": "cv",
+            "quote": "Built an LLM-assisted HR policy assistant with retrieval over 300 policy documents",
+            "reason": "Built retrieval system, but evaluation evidence is sampled rather than production-proven."
+          },
+          {
+            "req": "r4",
+            "score": 4,
+            "doc": "cv",
+            "quote": "Integrated the HRIS with payroll and the IT service desk through REST APIs and webhooks",
+            "reason": "Real integration with retries and alerting; warehouse schema design untested."
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 865,
+        "completionTokens": 245
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "people",
+      "round": 1,
+      "kind": "opening",
+      "output": {
+        "message": "Strong collaborator with clear growth potential. Onboarding should pair them with a data engineer for warehouse modelling, give a first project on evaluation practice for AI features, and set up shadowing with People team stakeholders to learn how requests are prioritised.",
+        "claims": [
+          {
+            "req": "collaboration",
+            "score": 5,
+            "doc": "cover",
+            "quote": "I chaired a fortnightly design review with HR business partners, legal and IT",
+            "reason": "Chairs cross-functional design review, strong evidence of collaboration."
+          },
+          {
+            "req": "growth",
+            "score": 4,
+            "doc": "interview",
+            "quote": "Mentored two junior developers and ran the team's code review rota",
+            "reason": "Mentoring and code review show capacity and appetite to grow others."
+          },
+          {
+            "req": "r5",
+            "score": 4,
+            "doc": "interview",
+            "quote": "Asked thoughtful questions about how the People team prioritises automation requests",
+            "reason": "Stakeholder awareness and thoughtful questioning indicate leadership potential."
+          },
+          {
+            "req": "r6",
+            "score": 5,
+            "doc": "cv",
+            "quote": "Ran a data protection impact assessment with the DPO for each AI use case",
+            "reason": "Consistent DPIA practice shows strong responsible AI and data protection grounding."
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 876,
+        "completionTokens": 319
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "auditor",
+      "round": 2,
+      "kind": "review",
+      "output": {
+        "message": "I reviewed all claims. Several scores look generous: c2 and c8 both cite the same LLM quote at different scores, and c12's quote shows only a question, not leadership. c10 duplicates c5. The CV's mention of data protection impact assessments is fine, but any document remarks on age, family or career breaks must be disregarded. No protected-characteristic claims found.",
+        "challenges": [
+          {
+            "claim": "c2",
+            "issue": "inconsistent",
+            "note": "Same quote scored 5 here and 4 as c8; scores should not differ on identical evidence."
+          },
+          {
+            "claim": "c8",
+            "issue": "inconsistent",
+            "note": "Duplicate of c2 at a lower score; quote alone does not justify either 5 or 4."
+          },
+          {
+            "claim": "c12",
+            "issue": "weak",
+            "note": "Asking questions is not leadership evidence; score 4 overstates this quote."
+          },
+          {
+            "claim": "c10",
+            "issue": "weak",
+            "note": "Same quote as c5, already counted; double-counting inflates collaboration."
+          },
+          {
+            "claim": "c1",
+            "issue": "weak",
+            "note": "Strong quote, but 5 needs outcome evidence beyond the workflow count."
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 1500,
+        "completionTokens": 269
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "hm",
+      "round": 2,
+      "kind": "response",
+      "output": {
+        "message": "I accept the c2 inconsistency: identical evidence cannot carry two scores. I set both to 4, as the quote shows build and retrieval but not measured model performance. On c1 I keep 5: the same document gives outcome evidence, the 62 per cent cut in manual handling time.",
+        "revisions": [
+          {
+            "claim": "c2",
+            "score": 4,
+            "reason": "Same quote as c8; retrieval build shown, measured model quality not evidenced here"
+          },
+          {
+            "claim": "c1",
+            "score": 5,
+            "reason": "Outcome evidenced: 62 per cent cut in manual handling time"
+          }
+        ],
+        "claims": []
+      },
+      "usage": {
+        "promptTokens": 1161,
+        "completionTokens": 140
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "tech",
+      "round": 2,
+      "kind": "response",
+      "output": {
+        "message": "c8 revised upward: the interview shows a weekly 50-answer quality sample scored by HR advisers, which is stronger evidence of AI integration practice than the build quote alone. c7 and c9 stand unchanged.",
+        "revisions": [
+          {
+            "claim": "c8",
+            "score": 5,
+            "reason": "Interview shows weekly 50-answer sample scored by HR advisers, evidencing live evaluation practice, not just build."
+          }
+        ],
+        "claims": []
+      },
+      "usage": {
+        "promptTokens": 1027,
+        "completionTokens": 100
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "people",
+      "round": 2,
+      "kind": "response",
+      "output": {
+        "message": "I accept both challenges. c12 drops to 2: the quote shows interest, not leadership. For c10 I keep 5 but replace the duplicated quote with distinct chairing evidence, so collaboration is not double-counted.",
+        "revisions": [
+          {
+            "claim": "c12",
+            "score": 2,
+            "reason": "Asking questions shows interest, not leadership."
+          }
+        ],
+        "claims": [
+          {
+            "claim": "c10",
+            "req": "collaboration",
+            "score": 5,
+            "reason": "Distinct chairing evidence replaces the duplicated quote.",
+            "quote": "chaired a fortnightly design review with HR business partners, legal and IT",
+            "doc": "cover"
+          }
+        ]
+      },
+      "usage": {
+        "promptTokens": 2320,
+        "completionTokens": 299
+      },
+      "invalidReplies": [
+        "claim 1: req must be one of collaboration, growth, r3, r5, r6"
+      ]
+    },
+    {
+      "agent": "comp",
+      "round": 3,
+      "kind": "band",
+      "output": {
+        "message": "The recommended £86,000 sits between the £85,000 midpoint and the £89,000 equity cap, above the £78,000 floor. The ceiling is £89,000 because the equity cap binds below the £92,000 upper quartile, so the band tops out there rather than at P75."
+      },
+      "usage": {
+        "promptTokens": 980,
+        "completionTokens": 70
+      },
+      "invalidReplies": []
+    },
+    {
+      "agent": "chair",
+      "round": 3,
+      "kind": "brief",
+      "output": {
+        "message": "Evidence is strong across automation delivery, AI integration, HR process and responsible AI, with clear outcome and governance examples. Panellists disagreed on scoring consistency: identical quotes were scored differently and a leadership claim rested on a question, now revised. No evidence gaps were found, so the debate closes on the record as it stands.",
+        "recommendation": "advance",
+        "dissent": [
+          "Scoring consistency was contested: identical quotes carried different scores, and one leadership score rested on a question rather than action."
+        ],
+        "questions": []
+      },
+      "usage": {
+        "promptTokens": 1760,
+        "completionTokens": 113
+      },
+      "invalidReplies": []
+    }
+  ],
+  "summary": {
+    "counters": {
+      "claimsMade": 14,
+      "claimsAccepted": 14,
+      "unsupported": 0,
+      "struck": 0
+    },
+    "metrics": {
+      "roleFit": 87,
+      "technicalDepth": 95,
+      "growthPotential": 84,
+      "evidenceStrength": 100,
+      "rampUp": 90,
+      "rampUpWeeks": 3
+    },
+    "outcome": "Advance to interview",
+    "usage": {
+      "promptTokens": 11353,
+      "completionTokens": 1955,
+      "llmTurns": 9
+    }
+  }
+}

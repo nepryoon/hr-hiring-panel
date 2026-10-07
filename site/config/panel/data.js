@@ -19,9 +19,9 @@ export const PEOPLE_DIMENSIONS = {
 };
 
 export const ROLES = {
-  "automation-lead": {
-    id: "automation-lead",
-    title: "Automation Lead, People Operations",
+  "hr-systems-automation-manager": {
+    id: "hr-systems-automation-manager",
+    title: "HR Systems Automation Manager",
     level: "L5",
     location: "London",
     summary: "Leads the automation of HR and People processes, including LLM features, with sound governance.",
@@ -104,9 +104,9 @@ export const DOCUMENT_LABELS = { cv: "CV", cover: "Cover note", interview: "Inte
 export const BENCHMARK = {
   source: "Synthetic benchmark (invented for this demo, 2026)",
   rows: [
-    { roleId: "automation-lead", level: "L4", location: "London", p25: 68000, p50: 74000, p75: 80000 },
-    { roleId: "automation-lead", level: "L5", location: "London", p25: 78000, p50: 85000, p75: 92000 },
-    { roleId: "automation-lead", level: "L5", location: "Manchester", p25: 70000, p50: 76000, p75: 82000 },
+    { roleId: "hr-systems-automation-manager", level: "L4", location: "London", p25: 68000, p50: 74000, p75: 80000 },
+    { roleId: "hr-systems-automation-manager", level: "L5", location: "London", p25: 78000, p50: 85000, p75: 92000 },
+    { roleId: "hr-systems-automation-manager", level: "L5", location: "Manchester", p25: 70000, p50: 76000, p75: 82000 },
     { roleId: "people-analytics", level: "L4", location: "London", p25: 60000, p50: 66000, p75: 71000 },
     { roleId: "people-analytics", level: "L4", location: "Manchester", p25: 52000, p50: 57000, p75: 62000 },
     { roleId: "people-analytics", level: "L5", location: "Manchester", p25: 61000, p50: 67000, p75: 73000 }
@@ -119,8 +119,8 @@ export const POLICY = {
   ceiling: "p75",
   roundTo: 500,
   equityCaps: {
-    "automation-lead:L5": 89000,
-    "automation-lead:L4": 78000,
+    "hr-systems-automation-manager:L5": 89000,
+    "hr-systems-automation-manager:L4": 78000,
     "people-analytics:L4": 61000,
     "people-analytics:L5": 72000
   },
